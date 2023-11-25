@@ -4,11 +4,36 @@
   hosts: localhost
   become: true
   tasks:
-    - name: Download k0s binary
-      command: curl -sSLf https://get.k0s.sh | sudo sh
+    - name: Check file k0s exists
+      stat:
+        path: /etc/init.d/k0scontroller
+      register: k0sfile
+    - name: Download k0s script
+      get_url:
+        url: https://get.k0s.sh
+        dest: /tmp/k0sinstall.sh
+        mode: 0755
+      when: k0sfile.stat.exists == False
+    - name: Install k0s
+      command: sh /tmp/k0sinstall.sh
+      when: k0sfile.stat.exists == False
     - name: Initialize k0s
-      command: sudo k0s install controller --single
-    - name: Start k0s
-      command: sudo k0s start
-    - name: Status k0s
-      command: sudo k0s status
+      command: k0s install controller --single
+      when: k0sfile.stat.exists == False
+    - name: Enable and check k0s service
+      sysvinit:
+        name: k0scontroller
+        state: started
+    - name: Wait for k8s apiserver
+      wait_for:
+        host: localhost
+        port: 6443
+        delay: 15
+        timeout: 180
+    - name: Install Ingress
+      command: k0s kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.4/deploy/static/provider/baremetal/deploy.yaml
+    - name: Install Cert-Manager
+      command: k0s kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.yaml
+    - name: Install OpenEBS
+      command: k0s kubectl apply -f https://openebs.github.io/charts/openebs-operator.yaml
+
