@@ -14,9 +14,17 @@ Prerrequisitos:
     ```
     <tu-usuario> ALL=(ALL) NOPASSWD: ALL
     ```
-    
+
 - Instalar make:
 
     ```
     sudo apt-get install make -y
+    ```
+
+Instalación:
+------------
+
+- Ejecutar
+    ```
+    make install
     ```
