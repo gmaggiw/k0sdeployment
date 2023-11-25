@@ -16,15 +16,14 @@ Prerrequisitos:
     ```
 
 - Instalar make:
-
-    ```
-    sudo apt-get install make -y
-    ```
+```
+sudo apt-get install make -y
+```
 
 Instalación:
 ------------
 
 - Ejecutar
-    ```
-    make install
-    ```
+```
+make install
+```
