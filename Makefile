@@ -18,4 +18,5 @@ monitoring:
 install: install-ansible k0s myapp monitoring
 	@echo "Deployed"
 
+
 .PHONY: install-ansible k0s myapp install
