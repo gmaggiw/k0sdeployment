@@ -47,10 +47,10 @@ Navegación:
 sudo k0s kubectl get service ingress-nginx-controller -n ingress-nginx
 ```
 - Tomar nota del puerto que está entre el "443" y "/TCP" en la columna PORT(S)
-- Con este puerto ya se puede navegar a con la urls:
-    - https://app.gmaggiw.local:`<PORT>`
-    - https://grafana.gmaggiw.local:`<PORT>`
-    - https://prometheus.gmaggiw.local:`<PORT>`
+- Con este puerto ya se puede navegar a con la urls, sustituyendo `[PORT]` por el puerto del paso anterior:
+    - https://app.gmaggiw.local:`[PORT]`
+    - https://grafana.gmaggiw.local:`[PORT]`
+    - https://prometheus.gmaggiw.local:`[PORT]`
 - La clave por defecto para Grafana y Prometheus es:
 ```
 user: admin
