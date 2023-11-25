@@ -11,8 +11,11 @@ myapp:
 	@echo "app deployment"
 	@ansible-playbook ansible/roles/app/tasks/main.yaml
 
+monitoring:
+	@echo "Monitoring deployment"
+	@ansible-playbook ansible/roles/monitoring/tasks/main.yaml
 
-install: install-ansible k0s myapp
-	@echo "Installing"
+install: install-ansible k0s myapp monitoring
+	@echo "Deployed"
 
 .PHONY: install-ansible k0s myapp install
