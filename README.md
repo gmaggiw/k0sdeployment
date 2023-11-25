@@ -14,6 +14,7 @@ Prerrequisitos:
     ```
     <tu-usuario> ALL=(ALL) NOPASSWD: ALL
     ```
+    
 - Instalar make:
 
     ```
