@@ -9,7 +9,7 @@ Prerrequisitos:
     ```
     sudo visudo
     ```
-    > Y se agrega la siguiente línea al final del archivo, reemplazando <tu-usuario> con tu nombre de usuario:
+    > Y se agrega la siguiente línea al final del archivo, reemplazando `<tu-usuario>` con tu nombre de usuario:
     ```
     <tu-usuario> ALL=(ALL) NOPASSWD: ALL
     ```
@@ -34,7 +34,7 @@ Configuración del /etc/host:
 sudo k0s kubectl get ingress -n app
 ```
 - Tomar nota de la IP en la columan ADDRESS
-- Agregar la siguiente entrada en el archivo /etc/host de la máquina donde se va a navegar, sustituyendo <IP-ADDRESS> con la IP del paso anterior:
+- Agregar la siguiente entrada en el archivo /etc/host de la máquina donde se va a navegar, sustituyendo `<IP-ADDRESS>` con la IP del paso anterior:
 ```
 <IP-ADDRESS> app.gmaggiw.local grafana.gmaggiw.local prometheus.gmaggiw.local
 ```
