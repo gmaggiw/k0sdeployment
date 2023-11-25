@@ -1,0 +1,7 @@
+- name: Install kapp
+  connection: local  
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Apply manifests
+      command: k0s kubectl apply -f kubernetes
