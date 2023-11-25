@@ -1,0 +1,14 @@
+---
+- name: Install k0s
+  connection: local  
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Download k0s binary
+      command: curl -sSLf https://get.k0s.sh | sudo sh
+    - name: Initialize k0s
+      command: sudo k0s install controller --single
+    - name: Start k0s
+      command: sudo k0s start
+    - name: Status k0s
+      command: sudo k0s status
